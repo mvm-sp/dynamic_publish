@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Home(){
+function Visu(){
 
     return( 
     <div>
@@ -10,6 +10,16 @@ function Home(){
     </div>
     )
 }
+
+function Home(){
+
+    return( 
+    <div>
+        <h1>Marina, sua linda</h1>
+    </div>
+    )
+}
+
 
 function Contador(){
 
