@@ -15,7 +15,7 @@ function Home(){
 
     return( 
     <div>
-        <h1>Batata</h1>
+        <h1>Marina sua linda, cuida do Koda pro Deco poder ir lá pra cima e dormir</h1>
     </div>
     )
 }
