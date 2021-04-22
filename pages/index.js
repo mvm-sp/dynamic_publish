@@ -15,7 +15,7 @@ function Home(){
 
     return( 
     <div>
-        <h1>Marina, sua linda</h1>
+        <h1>Marina, sua linda, eu te amo</h1>
     </div>
     )
 }
