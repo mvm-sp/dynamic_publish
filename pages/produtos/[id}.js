@@ -1,4 +1,8 @@
-export async function getStaticPaths() {
+//import Router from "next/dist/next-server/lib/router/router";
+//import next from "next";
+import { useRouter } from 'next/router'
+
+/*export async function getStaticPaths() {
     return {
         paths: [{
             params: {
@@ -24,12 +28,21 @@ export async function getStaticProps(context) {
     }
 }
 
-function Produtos(props) {
-    return <div>Id do produto: {props.id}</div>
-}
-
-export default Produtos;
 
 function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
+
+*/
+
+
+function Produtos(props) {
+    const router = useRouter();
+    const id = router.query.id;
+
+    return <div>Id do produto: {id}</div>
+
+    //return <div>Id do produto: {props.id}</div>
+}
+
+export default Produtos;
