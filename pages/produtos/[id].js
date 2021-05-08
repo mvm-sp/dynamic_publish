@@ -1,8 +1,9 @@
+//import { useRouter } from 'next/router'
 //import Router from "next/dist/next-server/lib/router/router";
 //import next from "next";
-import { useRouter } from 'next/router'
 
-/*export async function getStaticPaths() {
+
+export async function getStaticPaths() {
     return {
         paths: [{
             params: {
@@ -13,8 +14,9 @@ import { useRouter } from 'next/router'
                 id: '2'
             }
         }],
-        fallback: 'blocking'
+        fallback: 'blocking' 
     }
+    //fallback ('blocking' / true / false)
 }
 
 export async function getStaticProps(context) {
@@ -33,16 +35,27 @@ function delay(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+
+/*
+export async function getServerSideProps(context){
+
+    const id = context.query.id;
+
+    return{
+        props: {
+            id: id
+        }
+    }
+
+}
 */
-
-
 function Produtos(props) {
-    const router = useRouter();
-    const id = router.query.id;
+    //
+    //const router = useRouter()
+    //const { id } = router.query
 
-    return <div>Id do produto: {id}</div>
-
-    //return <div>Id do produto: {props.id}</div>
+    //return <p>Produto: {id}</p>
+    return <div>Id do produto: {props.id}</div>
 }
 
 export default Produtos;
