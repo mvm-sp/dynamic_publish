@@ -16,8 +16,8 @@ function acesso(props) {
 
 export async function getStaticProps(context) {
     //const apiSecret = process.env.COUTER_API_SECRET;
-    //const res = await fetch(`https://api.countapi.xyz/get/com.mvm/${apiSecret}`)
-    const res = await fetch(`http://localhost:3000/api/v1/access/`)
+    const res = await fetch(`https://api.countapi.xyz/get/com.mvm/${apiSecret}`)
+    //const res = await fetch(`http://localhost:3000/api/v1/access/`)
     
     const data = await res.json()
   
