@@ -3,7 +3,7 @@ function acesso(props) {
     const dynamicDateString = new Date().toGMTString();
 
     
-    var acessos = props.acesso.payload.value;
+    var acessos = props.acesso.value;
     return (
         <div>
             <div>Data: {dynamicDateString}</div>
