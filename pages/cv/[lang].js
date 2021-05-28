@@ -165,7 +165,7 @@ export async function getStaticProps(context) {
     let idLang = (context.params.lang==='en'? '2':'1');
     //console.log(context.params.lang, idLang,(context.params.lang.toString()=='en') )
    // idLang = '1'
-    let res = await fetch(`${process.env.URL_CV_BASE}resume/1/${idLang}`)
+    let res = await fetch(`https://mvm-cv-back.herokuapp.com/api/v1/resume/1/${idLang}`)
 
     const obj = await res.json()
 
