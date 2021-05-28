@@ -5,15 +5,33 @@ import style from './mvm.module.css';
 
 function conteudo(props) {
     
-    //console.log(skills1);
+    const index = (props.idLang === '1' ? 0 : 4)
+    //console.log(props.sessions.filter((s) => s.id === (1+index))[0].description);
     return (
         <div className={style.mvmMain}>
+            <div>
+                <a target="_self" href={"./br"}  >
+                <Image
+                  src='/img/br.png'
+                  alt="visit my linkekin profile"
+                  width={30}
+                  height={30}
+                /></a> &nbsp;&nbsp;
+                <a target="_self" href={"./en"}>
+                  <Image
+                  src='/img/en.png'
+                  alt="visit my git repository"
+                  width={30}
+                  height={30}
+                />
+                </a>
+            </div>
             <div className={style.mvmDivColor}>
               <div><span className={style.mvmName}>{props.basic.name}</span></div>
               <span className={style.mvmObjective}>{props.basic.description}</span>
             </div>
             <div className={style.mvmBox} style={{width:"500px"}}>
-              <p className={style.mvmRegularTitle}>Contato</p>		
+              <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (1+index))[0].description}</p>		
               <div><Image src='/img/local.png' lt="mail" width={15} height={15}/> <span className={style.mvmTextMain}>{props.basic.address}</span></div>
               <div><span className={style.mvmTextMain}>{props.basic.city} - {props.basic.state} - {props.basic.zipcode}</span></div>
               <div><Image src='/img/cel.png' lt="phone and whatsap" width={15} height={15}/> <span className={style.mvmTextMain}>{props.basic.phone}</span></div>
@@ -37,7 +55,7 @@ function conteudo(props) {
               </div>
             </div>
             <div  style={{width:"95%"}}>
-             <p className={style.mvmRegularTitle}>Histórico Profissional</p>	
+             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (2+index))[0].description}</p>	
                 {props.history.map((h) => (
                   <div>
                     <div><p className={style.mvmMidTitle}>{h.role}</p></div>
@@ -54,7 +72,7 @@ function conteudo(props) {
                 
             </div>      
             <div  style={{width:"95%"}}>
-             <p className={style.mvmRegularTitle}>Formação Acadêmica</p>	
+             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (3+index))[0].description}</p>	
                 {props.education.map((e) => (
                   <div>
                     <div><p className={style.mvmMidTitle}>{e.course}</p></div>
@@ -69,10 +87,10 @@ function conteudo(props) {
                   </div>   
                 ))}
             <div  style={{width:"95%"}}>
-             <p className={style.mvmRegularTitle}>Habilidades</p>	
+             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (4+index))[0].description}</p>	
              <table className={style.mvmRegularTable} >
                <tr className={style.mvmDivColumn}>
-                 <td style={{padding: "00px 50px 0px 0px"}}>
+                 <td style={{padding: "00px 25px 0px 25px"}}>
                   <p className={style.mvmTextMain}>{props.skills.filter((s) => s.idskilltype === 1)[0].skilltypename}</p>	
                   <table >    
                       {props.skills.filter((s) => s.idskilltype === 1).map((s) =>( 
@@ -92,7 +110,7 @@ function conteudo(props) {
                       ))}
                   </table>
                 </td>
-                <td style={{padding: "00px 50px 0px 0px"}}>
+                <td style={{padding: "00px 25px 0px 25px"}}>
                   <p className={style.mvmTextMain}>{props.skills.filter((s) => s.idskilltype === 2)[0].skilltypename}</p>	
                   <table >    
                       {props.skills.filter((s) => s.idskilltype === 2).map((s) =>( 
@@ -112,7 +130,7 @@ function conteudo(props) {
                       ))}
                   </table>
                 </td>
-                <td style={{padding: "00px 50px 0px 0px"}}>
+                <td style={{padding: "00px 25px 0px 25px"}}>
                   <p className={style.mvmTextMain}>{props.skills.filter((s) => s.idskilltype === 3)[0].skilltypename}</p>	
                   <table >    
                       {props.skills.filter((s) => s.idskilltype === 3).map((s) =>( 
@@ -162,7 +180,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 
-    let idLang = (context.params.lang==='en'? '1':'1');
+    let idLang = (context.params.lang==='en'? '2':'1');
     //const URL_Back = `https://mvm-cv-back.herokuapp.com/api/v1/resume/1/${idLang}`
     const URL_Back = `${process.env.URL_CV_BASE}resume/1/${idLang}`
     //console.log(context.params.lang, idLang,(context.params.lang.toString()=='en') )
@@ -187,7 +205,8 @@ export async function getStaticProps(context) {
           basic: obj.payload.basic ,
           history: obj.payload.history,
           education: obj.payload.education,
-          skills:obj.payload.skills
+          skills:obj.payload.skills,
+          sessions:obj.payload.sessions
       }, // will be passed to the page component as props
       revalidate: 1000
     }
