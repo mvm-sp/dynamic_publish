@@ -162,7 +162,7 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
 
-    let idLang = (context.params.lang==='en'? '2':'1');
+    let idLang = (context.params.lang==='en'? '1':'1');
     const URL_Back = `https://mvm-cv-back.herokuapp.com/api/v1/resume/1/${idLang}`
     //console.log(context.params.lang, idLang,(context.params.lang.toString()=='en') )
    // idLang = '1'
