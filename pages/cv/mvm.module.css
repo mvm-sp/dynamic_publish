@@ -146,6 +146,21 @@
     font-style: normal;
 }
 
+.mvmTextRegularBold{
+    font-family: "YACgEUrhTw0 0", _fb_, auto;
+    font-size: 14.9663px;
+    color: rgb(50, 50, 50);
+    line-height: 1.4em;
+    letter-spacing: 0em;
+    --para-spacing: 0;
+    text-transform: none;
+    --head-indent: 0;
+    --numeric-list-marker: none;
+    list-style-type: none;
+    font-weight: 700;
+    font-style: normal;
+}
+
 .mvmBox{
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);

@@ -66,6 +66,10 @@ function conteudo(props) {
                     </div>
                     <div className={style.mvmBox} >
                       <span className={style.mvmTextRegular}>{h.description}</span>&nbsp;
+                      <div >
+                        <span className={style.mvmTextRegular}> Tags: </span>
+                        <span className={style.mvmTextRegularBold}> {h.notes.split(';').map((t)=> (`(#${t})  `)) } </span>&nbsp;
+                      </div>
                     </div>
                   </div>   
                 ))}
