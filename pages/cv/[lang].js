@@ -5,8 +5,8 @@ import style from './mvm.module.css';
 
 function conteudo(props) {
     
-    const index = (props.idLang === '1' ? 0 : 4)
-    //console.log(props.sessions.filter((s) => s.id === (1+index))[0].description);
+    const index = (props.idLang === '1' ? 0 : 1)
+    
     return (
         <div className={style.mvmMain}>
             <div>
@@ -55,7 +55,7 @@ function conteudo(props) {
               </div>
             </div>
             <div  style={{width:"95%"}}>
-             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (2+index))[0].description}</p>	
+             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (3+index))[0].description}</p>	
                 {props.history.map((h) => (
                   <div>
                     <div><p className={style.mvmMidTitle}>{h.role}</p></div>
@@ -73,10 +73,9 @@ function conteudo(props) {
                     </div>
                   </div>   
                 ))}
-                
             </div>      
             <div  style={{width:"95%"}}>
-             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (3+index))[0].description}</p>	
+             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (5+index))[0].description}</p>	
                 {props.education.map((e) => (
                   <div>
                     <div><p className={style.mvmMidTitle}>{e.course}</p></div>
@@ -90,8 +89,24 @@ function conteudo(props) {
                     </div>
                   </div>   
                 ))}
+            </div>   
             <div  style={{width:"95%"}}>
-             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (4+index))[0].description}</p>	
+             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (9+index))[0].description}</p>	
+                {props.certificates.map((c) => (
+                  <div>
+                    <div><p className={style.mvmMidTitle}>{c.title}</p></div>
+                    <div>
+                      <span className={style.mvmTextMain}>{c.company}</span>&nbsp;|&nbsp;&nbsp;
+                      <span className={style.mvmTextMain} >{c.emission_date}</span>
+                    </div>
+                    <div >
+                      <span className={style.mvmTextRegular}>{c.notes}</span>&nbsp;
+                    </div>
+                  </div>   
+                ))}
+            </div>                
+            <div  style={{width:"95%"}}>
+             <p className={style.mvmRegularTitle}>{props.sessions.filter((s) => s.id === (7+index))[0].description}</p>	
              <table className={style.mvmRegularTable} >
                <tr className={style.mvmDivColumn}>
                  <td style={{padding: "00px 25px 0px 25px"}}>
@@ -139,7 +154,7 @@ function conteudo(props) {
                   <table >    
                       {props.skills.filter((s) => s.idskilltype === 3).map((s) =>( 
                         <tr>
-                          <td className={style.mvmTextMain}>{s.skillname}</td>&nbsp;
+                          <td className={style.mvmTextMain}>{s.skillname}</td>
                             <td>
                             {Array(s.level).fill(1).map((c) => (
                                 <Image
@@ -158,8 +173,7 @@ function conteudo(props) {
                 </tr>
               </table>
             </div> 
-               
-            </div>            
+                        
         </div>
     )
 
@@ -185,10 +199,9 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
 
     let idLang = (context.params.lang==='en'? '2':'1');
-    //const URL_Back = `https://mvm-cv-back.herokuapp.com/api/v1/resume/1/${idLang}`
+    
     const URL_Back = `${process.env.URL_CV_BASE}resume/1/${idLang}`
-    //console.log(context.params.lang, idLang,(context.params.lang.toString()=='en') )
-   // idLang = '1'
+
     let res = await fetch(URL_Back)
 
     const obj = await res.json()
@@ -209,6 +222,7 @@ export async function getStaticProps(context) {
           basic: obj.payload.basic ,
           history: obj.payload.history,
           education: obj.payload.education,
+          certificates: obj.payload.certificates,
           skills:obj.payload.skills,
           sessions:obj.payload.sessions
       }, // will be passed to the page component as props
