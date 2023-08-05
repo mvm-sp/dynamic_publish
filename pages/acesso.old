@@ -39,4 +39,4 @@ export async function getStaticProps(context) {
     }
   }
 
-//export default acesso;
+export default acesso;
