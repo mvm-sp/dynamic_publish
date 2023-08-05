@@ -168,11 +168,12 @@
 .mvmDivColumn{
     display: flex;
     justify-content: space-around;
-    padding: 10px;
+    padding: 2px;
     
   }
 
   .mvmRegularTable{
         border-collapse: collapse;
-    
+        border: 1px solid black;
+        width: 100%;
   }
